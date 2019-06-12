@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 describe('TrueToSizeController', () => {
   before(async () => {
     await TrueToSizeModel.sync({ force: true });

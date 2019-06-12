@@ -16,9 +16,9 @@ module.exports = {
   },
   overrides: [
     {
-      files: "*.**.test.js",
+      files: "*.test.js",
       rules: {
-        "no-unused-expressions": "off"
+        "no-undef": "off"
       }
     }
   ]
