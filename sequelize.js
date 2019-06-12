@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-let DB_NAME = process.env.DB_NAME || 'trueToSize_dev';
+let DB_NAME = process.env.DB_NAME || 'trueToSize';
 const DB_USERNAME = process.env.DB_USERNAME || '';
 const DB_PASSWORD = process.env.DB_PASSWORD || '';
 
