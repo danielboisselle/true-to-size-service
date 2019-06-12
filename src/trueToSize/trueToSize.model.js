@@ -4,6 +4,12 @@ module.exports = (sequelize, type) => sequelize.define('trueToSize', {
     primaryKey: true,
     autoIncrement: true,
   },
-  entries: type.ARRAY(type.INTEGER),
-  average: type.INTEGER,
+  entries: {
+    type: type.ARRAY(type.INTEGER),
+    defaultValue: [],
+  },
+  average: {
+    type: type.INTEGER,
+    defaultValue: 0,
+  }
 });
