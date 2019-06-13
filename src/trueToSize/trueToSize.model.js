@@ -11,5 +11,5 @@ module.exports = (sequelize, type) => sequelize.define('trueToSize', {
   average: {
     type: type.INTEGER,
     defaultValue: 0,
-  }
+  },
 });
