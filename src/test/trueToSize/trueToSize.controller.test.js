@@ -27,6 +27,13 @@ describe('TrueToSizeController', () => {
     expect(inst.average).equal(0);
   });
 
+  it('should get a TrueToSize by id', async () => {
+    const instanceCreated = await TrueToSizeModel.create();
+    const inst = await TrueToSizeController.getOne(instanceCreated.id);
+
+    expect(inst.id).equal(instanceCreated.id);
+  });
+
   it('should delete a TrueToSize', async () => {
     const instanceCreated = await TrueToSizeModel.create();
     const deleteOneRetuned = await TrueToSizeController.deleteOne(instanceCreated.id);

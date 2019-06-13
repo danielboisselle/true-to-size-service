@@ -2,6 +2,9 @@ module.exports = model => ({
   getAll() {
     return model.findAll().then(res => res);
   },
+  getOne(id) {
+    return model.findByPk(id);
+  },
   createOne() {
     return model.create();
   },
