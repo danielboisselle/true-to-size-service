@@ -18,7 +18,8 @@ module.exports = {
     {
       files: "*.test.js",
       rules: {
-        "no-undef": "off"
+        "no-undef": "off",
+        "import/no-extraneous-dependencies": "off"
       }
     }
   ]
