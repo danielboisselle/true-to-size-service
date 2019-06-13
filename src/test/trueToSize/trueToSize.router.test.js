@@ -81,7 +81,7 @@ describe('TrueToSize Router', () => {
         expect(res.body).to.be.a('object');
         expect(res.body.id).to.be.a('number');
         expect(res.body.average).to.be.a('number');
-        expect(res.body.id).to.be.a('array');
+        expect(res.body.entries).to.be.a('array');
         done();
       });
   });
