@@ -18,7 +18,7 @@ module.exports = model => ({
     const validEntries = [1, 2, 3, 4, 5];
 
     if (!validEntries.includes(entry)) {
-      throw new ValidationError(`Possible valid entries ${validEntries}`)
+      throw new ValidationError(`Possible valid entries ${validEntries}`);
     }
 
     return model.findByPk(id)

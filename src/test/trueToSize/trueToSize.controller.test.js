@@ -67,7 +67,7 @@ describe('TrueToSizeController', () => {
     it('should throw error if model does not exsist', async () => {
       try {
         const inst = await TrueToSizeModel.create();
-        const id = inst.id;
+        const { id } = inst;
         await inst.destroy();
 
         await TrueToSizeController.addEntry(id, 5);
