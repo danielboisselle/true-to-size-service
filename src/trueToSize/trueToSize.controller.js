@@ -5,7 +5,14 @@ module.exports = model => ({
     return model.findAll().then(res => res);
   },
   getOne(id) {
-    return model.findByPk(id);
+    return model.findByPk(id)
+      .then((inst) => {
+        if (!inst) {
+          throw new NotFoundError();
+        }
+
+        return inst;
+      });
   },
   createOne() {
     return model.create();
