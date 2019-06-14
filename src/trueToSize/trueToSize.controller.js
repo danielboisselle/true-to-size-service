@@ -1,4 +1,5 @@
 const { NotFoundError, ValidationError } = require('../utils/error');
+const averageEntries = require('../utils/averageEntries');
 
 module.exports = model => ({
   getAll() {
@@ -38,7 +39,7 @@ module.exports = model => ({
 
         return inst.update({
           entries: updatedEntries,
-          average: (updatedEntries.reduce((a, b) => a + b) / updatedEntries.length),
+          average: averageEntries(updatedEntries),
         });
       });
   },
