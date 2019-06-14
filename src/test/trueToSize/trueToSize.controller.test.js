@@ -5,7 +5,7 @@ const {
   TrueToSizeModel,
 } = require('../../../sequelize');
 const TrueToSizeController = require('../../trueToSize/trueToSize.controller')(TrueToSizeModel);
-const NotFoundError = require('../../utils/NotFoundError');
+const NotFound = require('../../utils/NotFound');
 
 describe('TrueToSizeController', () => {
   before(async () => {
@@ -68,7 +68,7 @@ describe('TrueToSizeController', () => {
       try {
         await TrueToSizeController.addEntry(999, 5);
       } catch (e) {
-        expect(e).to.be.an.instanceof(NotFoundError);
+        expect(e).to.be.an.instanceof(NotFound);
       }
     });
 
