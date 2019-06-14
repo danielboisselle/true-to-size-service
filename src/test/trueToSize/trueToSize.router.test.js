@@ -14,11 +14,16 @@ const {
 describe('TrueToSize Router', () => {
   let instToDelete;
   let instToManipulate;
+  let savedUuid;
 
   before(async () => {
     await TrueToSizeModel.sync({ force: true });
     instToDelete = await TrueToSizeModel.create();
     instToManipulate = await TrueToSizeModel.create();
+
+    const inst = await TrueToSizeModel.create();
+    savedUuid = inst.id;
+    await inst.destroy();
   });
 
   it('POST /trueToSize/:id/entry should add a new entry to the entity', (done) => {
@@ -36,6 +41,19 @@ describe('TrueToSize Router', () => {
       });
   });
 
+  it('POST /trueToSize/:id/entry should respond 400 invalid entry', (done) => {
+    const { id } = instToManipulate;
+    const entry = 6;
+
+    chai.request(app)
+      .post(`/trueToSize/${id}/entry`)
+      .send({ entry })
+      .end(async (err, res) => {
+        expect(res).to.have.status(400);
+        done();
+      });
+  });
+
   it('GET /trueToSize/:id should get a single trueToSize entity', (done) => {
     const { id } = instToManipulate;
 
@@ -45,6 +63,15 @@ describe('TrueToSize Router', () => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.a('object');
         expect(res.body.id).equal(id);
+        done();
+      });
+  });
+
+  it('GET /trueToSize/:id should respond 404 not found for nonexisting entity', (done) => {
+    chai.request(app)
+      .get(`/trueToSize/${savedUuid}`)
+      .end(async (err, res) => {
+        expect(res).to.have.status(404);
         done();
       });
   });
