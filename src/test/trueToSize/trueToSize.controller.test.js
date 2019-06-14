@@ -5,6 +5,7 @@ const {
   TrueToSizeModel,
 } = require('../../../sequelize');
 const TrueToSizeController = require('../../trueToSize/trueToSize.controller')(TrueToSizeModel);
+const NotFoundError = require('../../utils/NotFoundError');
 
 describe('TrueToSizeController', () => {
   before(async () => {
@@ -61,6 +62,30 @@ describe('TrueToSizeController', () => {
 
     it('should update properties when entries are added', async () => {
       expect(instanceUpdated.average).equal(5);
+    });
+
+    it('should throw error if model does not exsist', async () => {
+      try {
+        await TrueToSizeController.addEntry(999, 5);
+      } catch (e) {
+        expect(e).to.be.an.instanceof(NotFoundError);
+      }
+    });
+
+    it('should average numbers correctly', async () => {
+      const entries = [5, 5, 5, 5, 5];
+      const newEntry = 6;
+      const average = [5, 5, 5, 5, 5].reduce((a, b) => a + b) / entries.length;
+      const newAverage = [5, 5, 5, 5, 5, newEntry].reduce((a, b) => a + b) / (entries.length + 1);
+
+      const inst = await TrueToSizeModel.create({
+        entries,
+        average,
+      });
+
+      const updatedInstance = await TrueToSizeController.addEntry(inst.id, newEntry);
+
+      expect(updatedInstance.average).equal(newAverage);
     });
   });
 });
