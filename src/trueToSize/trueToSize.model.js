@@ -1,8 +1,8 @@
 module.exports = (sequelize, type) => sequelize.define('trueToSize', {
   id: {
-    type: type.INTEGER,
+    type: type.UUID,
+    defaultValue: type.UUIDV4,
     primaryKey: true,
-    autoIncrement: true,
   },
   entries: {
     type: type.ARRAY(type.INTEGER),
