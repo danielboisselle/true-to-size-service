@@ -5,7 +5,7 @@ const {
   TrueToSizeModel,
 } = require('../../../sequelize');
 const TrueToSizeController = require('../../trueToSize/trueToSize.controller')(TrueToSizeModel);
-const NotFound = require('../../utils/NotFound');
+const { NotFoundError, ValidationError } = require('../../utils/error');
 
 describe('TrueToSizeController', () => {
   before(async () => {
@@ -66,15 +66,29 @@ describe('TrueToSizeController', () => {
 
     it('should throw error if model does not exsist', async () => {
       try {
-        await TrueToSizeController.addEntry(999, 5);
+        const inst = await TrueToSizeModel.create();
+        const id = inst.id;
+        await inst.destroy();
+
+        await TrueToSizeController.addEntry(id, 5);
       } catch (e) {
-        expect(e).to.be.an.instanceof(NotFound);
+        expect(e).to.be.an.instanceof(NotFoundError);
+      }
+    });
+
+    it('should throw error if entry is not between 1-5', async () => {
+      const inst = await TrueToSizeModel.create();
+
+      try {
+        await TrueToSizeController.addEntry(inst.id, 6);
+      } catch (e) {
+        expect(e).to.be.an.instanceof(ValidationError);
       }
     });
 
     it('should average numbers correctly', async () => {
       const entries = [5, 5, 5, 5, 5];
-      const newEntry = 6;
+      const newEntry = 1;
       const average = [5, 5, 5, 5, 5].reduce((a, b) => a + b) / entries.length;
       const newAverage = [5, 5, 5, 5, 5, newEntry].reduce((a, b) => a + b) / (entries.length + 1);
 

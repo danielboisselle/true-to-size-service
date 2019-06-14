@@ -79,7 +79,6 @@ describe('TrueToSize Router', () => {
       .end(async (err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.a('object');
-        expect(res.body.id).to.be.a('number');
         expect(res.body.average).to.be.a('number');
         expect(res.body.entries).to.be.a('array');
         done();
