@@ -1,14 +1,14 @@
 const host = process.env.DB_HOST || 'localhost';
-const dialct = 'postgres';
+const dialect = 'postgres';
 
 module.exports = {
   "development": {
     host,
-    dialct,
+    dialect,
   },
   "test": {
     host,
-    dialct,
+    dialect,
     logging: false,
   }
 }
