@@ -90,7 +90,7 @@ describe('TrueToSizeController', () => {
       const entries = [5, 5, 5, 5, 5];
       const newEntry = 1;
       const average = [5, 5, 5, 5, 5].reduce((a, b) => a + b) / entries.length;
-      const newAverage = [5, 5, 5, 5, 5, newEntry].reduce((a, b) => a + b) / (entries.length + 1);
+      const newAverage = 4.3333333333333;
 
       const inst = await TrueToSizeModel.create({
         entries,
