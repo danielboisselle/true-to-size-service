@@ -75,8 +75,8 @@ module.exports = {
     if (err.message) {
       const statusCode = err.statusCode || 500;
       res.status(statusCode).send(err.message);
+    } else {
+      res.status(500).json({ error: 'Internal Server Error' });
     }
-
-    res.status(500).json({ error: 'Internal Server Error' });
   },
 };
