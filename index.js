@@ -11,7 +11,7 @@ const {
   TrueToSizeRouter,
 } = require('./src/routers')
 
-app.use('/trueToSize', TrueToSizeRouter);
+app.use('/trueToSizes', TrueToSizeRouter);
 
 app.listen(port, () => {
   console.log(`Running on http://localhost:${port}`);

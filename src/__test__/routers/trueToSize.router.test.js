@@ -26,12 +26,12 @@ describe('TrueToSize Router', () => {
     await inst.destroy();
   });
 
-  it('POST /trueToSize/:id/entry should add a new entry to the entity', (done) => {
+  it('POST /trueToSizes/:id/entry should add a new entry to the entity', (done) => {
     const { id } = instToManipulate;
     const entry = 5;
 
     chai.request(app)
-      .post(`/trueToSize/${id}/entry`)
+      .post(`/trueToSizes/${id}/entry`)
       .send({ entry })
       .end(async (err, res) => {
         expect(res).to.have.status(200);
@@ -41,12 +41,12 @@ describe('TrueToSize Router', () => {
       });
   });
 
-  it('POST /trueToSize/:id/entry should respond 400 invalid entry', (done) => {
+  it('POST /trueToSizes/:id/entry should respond 400 invalid entry', (done) => {
     const { id } = instToManipulate;
     const entry = 6;
 
     chai.request(app)
-      .post(`/trueToSize/${id}/entry`)
+      .post(`/trueToSizes/${id}/entry`)
       .send({ entry })
       .end(async (err, res) => {
         expect(res).to.have.status(400);
@@ -54,11 +54,11 @@ describe('TrueToSize Router', () => {
       });
   });
 
-  it('GET /trueToSize/:id should get a single trueToSize entity', (done) => {
+  it('GET /trueToSizes/:id should get a single trueToSizes entity', (done) => {
     const { id } = instToManipulate;
 
     chai.request(app)
-      .get(`/trueToSize/${id}`)
+      .get(`/trueToSizes/${id}`)
       .end(async (err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.a('object');
@@ -67,20 +67,20 @@ describe('TrueToSize Router', () => {
       });
   });
 
-  it('GET /trueToSize/:id should respond 404 not found for nonexisting entity', (done) => {
+  it('GET /trueToSizes/:id should respond 404 not found for nonexisting entity', (done) => {
     chai.request(app)
-      .get(`/trueToSize/${savedUuid}`)
+      .get(`/trueToSizes/${savedUuid}`)
       .end(async (err, res) => {
         expect(res).to.have.status(404);
         done();
       });
   });
 
-  it('DELETE /trueToSize/:id should delete the entity by id', (done) => {
+  it('DELETE /trueToSizes/:id should delete the entity by id', (done) => {
     const { id } = instToDelete;
 
     chai.request(app)
-      .delete(`/trueToSize/${id}`)
+      .delete(`/trueToSizes/${id}`)
       .end(async (err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.a('object');
@@ -90,9 +90,9 @@ describe('TrueToSize Router', () => {
       });
   });
 
-  it('GET /trueToSize should get all trueToSize entities', (done) => {
+  it('GET /trueToSizes should get all trueToSizes entities', (done) => {
     chai.request(app)
-      .get('/trueToSize')
+      .get('/trueToSizes')
       .end(async (err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.a('array');
@@ -100,9 +100,9 @@ describe('TrueToSize Router', () => {
       });
   });
 
-  it('POST /trueToSize should create a new trueToSize entity', (done) => {
+  it('POST /trueToSizes should create a new trueToSizes entity', (done) => {
     chai.request(app)
-      .post('/trueToSize')
+      .post('/trueToSizes')
       .end(async (err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.be.a('object');
