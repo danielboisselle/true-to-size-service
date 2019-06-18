@@ -7,7 +7,11 @@ app.use(bodyParser.json());
 
 const port = process.env.PORT || 3000;
 
-app.use('/trueToSize', require('./src/routers/trueToSize.router'));
+const {
+  TrueToSizeRouter,
+} = require('./src/routers')
+
+app.use('/trueToSize', TrueToSizeRouter);
 
 app.listen(port, () => {
   console.log(`Running on http://localhost:${port}`);
