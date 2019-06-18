@@ -14,13 +14,9 @@ const config = require('./db.config')[environment]
 
 const sequelize = new Sequelize(DB_NAME, DB_USERNAME, DB_PASSWORD, config);
 
-const TrueToSizeModel = require('./src/trueToSize/trueToSize.model')(sequelize, Sequelize);
-
 sequelize.sync({})
   .then(() => {
     // Database & tables created
   });
 
-module.exports = {
-  TrueToSizeModel,
-};
+module.exports = sequelize;

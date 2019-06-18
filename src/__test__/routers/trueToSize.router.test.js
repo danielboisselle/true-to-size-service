@@ -9,7 +9,7 @@ const app = require('../../../index');
 
 const {
   TrueToSizeModel,
-} = require('../../../sequelize');
+} = require('../../models');
 
 describe('TrueToSize Router', () => {
   let instToDelete;

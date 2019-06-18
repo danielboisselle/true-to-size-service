@@ -3,8 +3,8 @@ const {
 } = require('chai');
 const {
   TrueToSizeModel,
-} = require('../../../sequelize');
-const TrueToSizeController = require('../../trueToSize/trueToSize.controller')(TrueToSizeModel);
+} = require('../../models');
+const { TrueToSizeController, } = require('../../controllers');
 const { NotFoundError, ValidationError } = require('../../utils/error');
 
 describe('TrueToSizeController', () => {

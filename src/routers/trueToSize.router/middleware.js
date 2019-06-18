@@ -1,5 +1,4 @@
-const { TrueToSizeModel } = require('../../sequelize');
-const TrueToSizeController = require('./trueToSize.controller')(TrueToSizeModel);
+const { TrueToSizeController } = require('../../controllers')
 
 module.exports = {
   PostTrueToSizeEntry: async (req, res, next) => {

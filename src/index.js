@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const TrueToSizeRouter = require('./trueToSize.router');
+const TrueToSizeRouter = require('./routes');
 
 // POST a TrueToSize entry
 router.post('/:id/entry', TrueToSizeRouter.PostTrueToSizeEntry);
