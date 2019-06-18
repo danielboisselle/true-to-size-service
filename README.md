@@ -19,12 +19,12 @@ To test the app run:
 $ npm run start
 ```
 ### Available APIs
-- POST /trueToSize/{id}/entry 
-  - example request body: { entry: 5 }
-- GET /trueToSize/{id}
-- DELETE /trueToSize/{id}
-- GET /trueToSize
-- POST /trueToSize
+- POST   /trueToSize/{id}/entry - Creates a new true to size entry at 'id'
+  - example request.body = { entry: 5 }
+- GET    /trueToSize/{id} - Retrive a true to size at 'id'
+- DELETE /trueToSize/{id} - Deletes a true to size at 'id'
+- GET    /trueToSize - Retrives all true to sizes
+- POST   /trueToSize - Creates a new true to size
   
 ### Future Features/Updates
 - optimize average entries calculation by storing sum of entries on TrueToSize entity
