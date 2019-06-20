@@ -73,7 +73,7 @@ module.exports = {
   ErrorHandler: (err, req, res) => {
     if (err.message) {
       const statusCode = err.statusCode || 500;
-      res.status(statusCode).send(err.message);
+      res.status(statusCode).send(err);
     } else {
       res.status(500).json({ error: 'Internal Server Error' });
     }
