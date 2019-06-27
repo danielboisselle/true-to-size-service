@@ -108,9 +108,9 @@ describe('TrueToSizeController', () => {
 
       await TrueToSizeController.addEntry(id, 5);
       await TrueToSizeController.addEntry(id, 5);
-      await TrueToSizeController.addEntry(id, 5);
+      const updatedInst = await TrueToSizeController.addEntry(id, 5);
 
-      expect(inst.entriesSum).equal(15);
+      expect(updatedInst.entriesSum).equal(15);
     });
 
     it('should decrement instance\'s \'entriesSum\' property when removing/deleting entries', async () => {
@@ -118,9 +118,9 @@ describe('TrueToSizeController', () => {
       const { id } = inst;
 
       await TrueToSizeController.addEntry(id, 5);
-      await TrueToSizeController.removeEntry(id, 5);
+      const updatedInst = await TrueToSizeController.removeEntry(id, 5);
 
-      expect(inst.entriesSum).equal(0);
+      expect(updatedInst.entriesSum).equal(0);
     });
   });
 });
