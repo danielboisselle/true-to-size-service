@@ -103,11 +103,24 @@ describe('TrueToSizeController', () => {
     });
 
     it('should add to instance\'s \'entriesSum\' property when adding entries', async () => {
+      const inst = await TrueToSizeModel.create();
+      const { id } = inst;
 
+      await TrueToSizeController.addEntry(id, 5);
+      await TrueToSizeController.addEntry(id, 5);
+      await TrueToSizeController.addEntry(id, 5);
+
+      expect(inst.entriesSum).equal(15);
     });
 
-    it('should decrement instance\'s \'entriesSum\' property when adding entries', async () => {
+    it('should decrement instance\'s \'entriesSum\' property when removing/deleting entries', async () => {
+      const inst = await TrueToSizeModel.create();
+      const { id } = inst;
 
+      await TrueToSizeController.addEntry(id, 5);
+      await TrueToSizeController.removeEntry(id, 5);
+
+      expect(inst.entriesSum).equal(0);
     });
   });
 });
