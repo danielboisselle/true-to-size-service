@@ -23,7 +23,25 @@ module.exports = {
     }
   },
   DeleteTrueToSizeEntry: async (req, res, next) => {
-    res.status(200);
+    const {
+      params,
+      body,
+    } = req;
+
+    const {
+      id,
+    } = params;
+
+    const {
+      entry,
+    } = body;
+
+    try {
+      await TrueToSizeController.removeEntry(id, entry);
+      res.status(200).json({ status: 'successful' });
+    } catch (e) {
+      next(e);
+    }
   },
   GetTrueToSizeById: async (req, res, next) => {
     const {
