@@ -102,11 +102,11 @@ describe('TrueToSizeController', () => {
       expect(updatedInstance.average).equal(newAverage);
     });
 
-    it('should add to instance\'s \'sum\' property when adding entries', async () => {
+    it('should add to instance\'s \'entriesSum\' property when adding entries', async () => {
 
     });
 
-    it('should decrement instance\'s \'sum\' property when adding entries', async () => {
+    it('should decrement instance\'s \'entriesSum\' property when adding entries', async () => {
 
     });
   });
