@@ -8,6 +8,10 @@ module.exports = (sequelize, type) => sequelize.define('trueToSize', {
     type: type.ARRAY(type.INTEGER),
     defaultValue: [],
   },
+  entriesSum: {
+    type: type.INTEGER,
+    defaultValue: 0,
+  },
   average: {
     type: type.FLOAT,
     defaultValue: 0,

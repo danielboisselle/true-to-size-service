@@ -4,6 +4,7 @@ const router = express.Router();
 
 const {
   PostTrueToSizeEntry,
+  DeleteTrueToSizeEntry,
   GetTrueToSizeById,
   DeleteTrueToSizeById,
   GetAllTrueToSize,
@@ -13,6 +14,9 @@ const {
 
 // POST a TrueToSize entry
 router.post('/:id/entry', PostTrueToSizeEntry);
+
+// DELETE a TrueToSize entry
+router.delete('/:id/entry', DeleteTrueToSizeEntry);
 
 // GET TrueToSize by Id
 router.get('/:id', GetTrueToSizeById);

@@ -41,6 +41,22 @@ describe('TrueToSize Router', () => {
       });
   });
 
+  it('DELETE /trueToSizes/:id/entry should delete an entry to the entity', (done) => {
+    // Delete the entry from POST test
+    const { id } = instToManipulate;
+    const entry = 5;
+
+    chai.request(app)
+      .delete(`/trueToSizes/${id}/entry`)
+      .send({ entry })
+      .end(async (err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.a('object');
+        expect(res.body.entriesSum).equal(0);
+        done();
+      });
+  });
+
   it('POST /trueToSizes/:id/entry should respond 400 invalid entry', (done) => {
     const { id } = instToManipulate;
     const entry = 6;

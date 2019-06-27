@@ -22,6 +22,9 @@ module.exports = {
       next(e);
     }
   },
+  DeleteTrueToSizeEntry: async (req, res, next) => {
+    res.status(200);
+  },
   GetTrueToSizeById: async (req, res, next) => {
     const {
       params,
