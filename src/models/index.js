@@ -5,4 +5,4 @@ const TrueToSizeModel = require('./trueToSize.model')(sequelize, Sequelize);
 
 module.exports = {
   TrueToSizeModel,
-}
+};

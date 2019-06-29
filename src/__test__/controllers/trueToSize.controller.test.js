@@ -4,7 +4,7 @@ const {
 const {
   TrueToSizeModel,
 } = require('../../models');
-const { TrueToSizeController, } = require('../../controllers');
+const { TrueToSizeController } = require('../../controllers');
 const { NotFoundError, ValidationError } = require('../../utils/error');
 
 describe('TrueToSizeController', () => {

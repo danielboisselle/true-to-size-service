@@ -86,5 +86,5 @@ module.exports = model => ({
           entriesSum: updatedEntriesSum,
         });
       });
-  }
+  },
 });

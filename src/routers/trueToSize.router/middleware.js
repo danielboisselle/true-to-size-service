@@ -1,4 +1,4 @@
-const { TrueToSizeController } = require('../../controllers')
+const { TrueToSizeController } = require('../../controllers');
 
 module.exports = {
   PostTrueToSizeEntry: async (req, res, next) => {
