@@ -10,11 +10,11 @@ if (environment === 'test') {
   DB_NAME = 'trueToSize_test';
 }
 
-const config = require('./db.config')[environment]
+const config = require('./db.config')[environment];
 
 const sequelize = new Sequelize(DB_NAME, DB_USERNAME, DB_PASSWORD, config);
 
-sequelize.sync({})
+sequelize.sync({ })
   .then(() => {
     // Database & tables created
   });
